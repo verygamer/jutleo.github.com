@@ -7,7 +7,6 @@ tags: [Data Pump]
 ---
 {% include JB/setup %}
 
-##【引言】
 <br/>
 帮测试组导数据，顺便整理下Oracle导入导出的命令以备后用。
 ###简单的导入和导出命令  
