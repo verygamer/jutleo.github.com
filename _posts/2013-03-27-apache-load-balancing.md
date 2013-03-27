@@ -49,11 +49,12 @@ Apache负载均衡配置说明。
 	</Proxy>
 	ProxyPass /x balancer://x
 	
-  balancer://x  其中x为配置的负载均衡的唯一名称，可在后面引用；
-  BalancerMember  实际服务器的地址，可配置多个，每个都会被指定分发到。
-  ProxyPass /x  代理名称，值当前访问路径为/x均指定到负载均衡去处理
+  balancer://x  其中x为配置的负载均衡的唯一名称，可在后面引用；  
+  BalancerMember  实际服务器的地址，可配置多个，每个都会被指定分发到；  
+  ProxyPass /x  代理名称，值当前访问路径为/x均指定到负载均衡去处理；  
 
-  ###负载比例分配配置
+  ###负载比例分配配置  
+  
   需要给BalancerMember 加上一个参数loadfactor ，取值为1~100，默认为1，值越大分配到的请求数越多。
   
 	ProxyRequests Off  
@@ -66,10 +67,10 @@ Apache负载均衡配置说明。
 	表示两个服务器已7:1的比例处理请求。
 
   ###负载算法配置
-  Apache负载均衡的算法有三种，系统默认采取安装请求次数均衡（1:1）。
-  lbmethod=byrequests 按照请求次数均衡(默认)。 
-  lbmethod=bytraffic 按照流量均衡。
-  lbmethod=bybusyness 按照繁忙程度均衡(总是分配给活跃请求数最少的服务器)
+  Apache负载均衡的算法有三种，系统默认采取安装请求次数均衡（1:1）。  
+  lbmethod=byrequests 按照请求次数均衡(默认)。   
+  lbmethod=bytraffic 按照流量均衡。  
+  lbmethod=bybusyness 按照繁忙程度均衡(总是分配给活跃请求数最少的服务器)   
   
   具体配置如下：
   
@@ -119,30 +120,4 @@ Apache负载均衡配置说明。
   示例：
   
 	访问http://localhost/x 会被均衡的转发到http://www.baidu.com,和http://www.163.com中。
-	访问http://localhost/y会被均衡的转发到http://www.google.com,和http://www.163.com中。
-
-
-
-
-###数据泵 Data Dump
-  *Oracle 10g*，包含10g 出现了数据泵的概念，导入导出变的神速。
-  
-  *完整的命令如下*
-	expdp user/pass@ip:port/sid directory=directory name dumpfile=dmp file name  
-	impdp user/pass@ip:port/sid directory=directory name dumpfile=dmp file name remap_schema=old username:target username remap_tablespace=old tablespace name:target tablespace name  
-  
-  *directory* ： 指定导出的路径
-	
-	create or replace director dump_dir as '/tmp';
-
-可通过 `SELECT * FROM dba_directories;` 查询路径，使用expdp和impdp命令时，直接引用dump_dir即可，Oracle会自动将dmp文件转存到次目录。
-
-  * remap_schema *  
-   如果源用户和目标用户不一致的话需要指定次参数 如`rempa_schema=userA:userB`
-  * remap_tablespace *
-   看字面意思也不难理解，表示源库和目的库表空间不一致，可通过次参数限定。 如`remap_tablespace=tablespaceA:tablespaceB`
- 
-  OK, 试试吧，不是一般的快啊。  
-  
-  问题来了，低版本导入到高版本会报错，加上version参数指定目的地库的版本号即可。  
-  千万记得，加入版本号是针对导出时使用`expdp version=10.2.0.1.0`，版本号是目的库的版本号哦  
+	访问http://localhost/y会被均衡的转发到http://www.google.com,和http://www.163.com中。  
