@@ -50,8 +50,8 @@ Apache负载均衡配置说明。
 	ProxyPass /x balancer://x
 	
   balancer://x  其中x为配置的负载均衡的唯一名称，可在后面引用；  
-  BalancerMember  实际服务器的地址，可配置多个，每个都会被指定分发到；  
-  ProxyPass /x  代理名称，值当前访问路径为/x均指定到负载均衡去处理；  
+  BalancerMember 实际服务器的地址，可配置多个，每个都会被指定分发到；  
+  ProxyPass /x 代理名称，值当前访问路径为/x均指定到负载均衡去处理；  
 
   ###负载比例分配配置  
   
@@ -99,7 +99,7 @@ Apache负载均衡配置说明。
 	</Proxy>
 	ProxyPass /x balancer://x
 
-  ###配置多个负载均衡
+  ###配置多个负载均衡  
   
   上面一段可配置多个
   
