@@ -3,7 +3,7 @@ layout: post
 title: "apache负载均衡"
 tagline: "apche load balancing"
 description: "公司的实施项目很多，11年整理的负载均衡配置文档，多次给大家邮件过去，还是有很多人要，这次整理出来贴到网上来。"
-tags: [Data Pump]
+tags: [apache load balancing]
 ---
 {% include JB/setup %}
 
